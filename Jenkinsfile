@@ -5,7 +5,7 @@ pipeline{
 	agent any
 	stages {
 		stage ('Build backend') {
-			steps {
+			withMaven(maven: 'mvn') {
 			 		sh 'mvn clean package -DskipTests=true'
 			}
 		}
