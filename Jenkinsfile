@@ -23,7 +23,15 @@ pipeline {
             }
             steps {
 				withSonarQubeEnv('SONAR_LOCAL'){
-				    sh  "${scanerHOME}/bin/sonar-scanner -e -Dsonar.projectKey=backend -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=1296e651ae0f526d9bc8061faf317f3707678ec0 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/src/test/**,**/entity/**"	
+				    sh  "${scanerHOME}/bin/sonar-scaner -e -Dsonar.projectKey=backend -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=1296e651ae0f526d9bc8061faf317f3707678ec0 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/src/test/**,**/entity/**"	
+				}
+            }
+        }
+		stage ('Quality Gate') {
+            steps {
+				sleep(5)
+				timeout(time: 1, until: 'MINUTES'){
+					waitForQualityGate abortPipeLine: true
 				}
             }
         }
