@@ -1,6 +1,3 @@
-tools {
-    maven 'MAVEN_HOME'
-}
 pipeline{
 	agent any
 	stages {
