@@ -2,7 +2,11 @@ pipeline{
 	agent any
 	stages {
 		stage ('Build backend') {
-			sh 'mvn clean package -DskipTests=true'
+			steps {
+				step {
+			 		sh 'mvn clean package -DskipTests=true'
+				}
+			}
 		}
 	}
 }
