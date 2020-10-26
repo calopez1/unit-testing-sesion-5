@@ -3,8 +3,7 @@ pipeline{
 	stages {
 		stage ('Build backend') {
 			steps {
-					def = mvnHOME = tool name: 'MAVEN_HOME', type: 'maven'
-			 		sh "{mvnHOME}/bin/mvn clean package -DskipTests=true"
+			 		sh 'mvn clean package -DskipTests=true'
 			}
 		}
 	}
