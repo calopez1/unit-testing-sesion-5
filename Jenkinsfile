@@ -6,7 +6,7 @@ pipeline {
                 mvnHOME = tool 'MAVEN_HOME'
             }
             steps {
-		sh  "${mvnHOME}/bin/mvn clean package -DskipTests=true"	
+		sh  "${mvnHOME}/bin/mvn test"	
             }
         }
     }
